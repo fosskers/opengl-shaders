@@ -7,7 +7,7 @@
 
 /* Creates and links a complete Shader Program */
 GLuint oglsProgram(shaders_t* shaders) {
-        GLuint program = -1;
+        GLuint program = 0;
 
         check(shaders != NULL, "Bad shaders given.");
 
@@ -19,7 +19,7 @@ GLuint oglsProgram(shaders_t* shaders) {
 
         return program;
  error:
-        return -1;
+        return 0;
 }
 
 /* Kill compiled shader objects */
@@ -51,7 +51,7 @@ shaders_t* oglsShaders(const char* vSourceFile, const char* fSourceFile) {
         vShader = oglsCompileShader(vertexSource,   GL_VERTEX_SHADER);
         fShader = oglsCompileShader(fragmentSource, GL_FRAGMENT_SHADER);
 
-        check(vShader != -1 && fShader != -1, "Shader compilation failed.");
+        check(vShader != 0 && fShader != 0, "Shader compilation failed.");
 
         shaders = malloc(sizeof(shaders_t));
         check_mem(shaders);
@@ -71,7 +71,7 @@ shaders_t* oglsShaders(const char* vSourceFile, const char* fSourceFile) {
 GLuint oglsCompileShader(const GLchar* source, GLenum shaderType) {
         GLchar infoLog[512];
         GLint  success;
-        GLuint shader = -1;
+        GLuint shader = 0;
 
         check(source != NULL, "Empty shader source given.");
 
@@ -86,7 +86,7 @@ GLuint oglsCompileShader(const GLchar* source, GLenum shaderType) {
 
         return shader;
  error:
-        return -1;
+        return 0;
 }
 
 GLchar* oglsReadShaderSource(FILE* source) {
