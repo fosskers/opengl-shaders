@@ -31,7 +31,7 @@ void oglsDestroy(shaders_t* shaders) {
         }
 }
 
-/* Compiles shaders, given File pointers to their sources */
+/* Compiles shaders, given the filenames of their sources */
 shaders_t* oglsShaders(const char* vSourceFile, const char* fSourceFile) {
         GLuint vShader;
         GLuint fShader;
@@ -96,10 +96,10 @@ GLchar* oglsReadShaderSource(FILE* source) {
         
         check(source != NULL, "NULL shader source file given.");
         
-        s = malloc(sizeof(GLchar) * MAX_SOURCE_LEN);
+        s = malloc(sizeof(GLchar) * MAX_SOURCE_CHARS);
         check_mem(s);
 
-        while((c = fgetc(source)) != EOF && i < MAX_SOURCE_LEN - 1) {
+        while((c = fgetc(source)) != EOF && i < MAX_SOURCE_CHARS - 1) {
                 s[i] = c;
                 i++;
         }
