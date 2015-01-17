@@ -75,7 +75,7 @@ GLuint oglsCompileShader(const GLchar* source, GLenum shaderType) {
 
         check(source != NULL, "Empty shader source given.");
 
-        shader = glCreateShader(shaderType);        
+        shader = glCreateShader(shaderType);
         glShaderSource(shader,1,&source,NULL);
         glCompileShader(shader);
 
@@ -104,7 +104,7 @@ GLchar* oglsReadShaderSource(FILE* source) {
                 i++;
         }
 
-        s[i+1] = '\0';
+        s[i] = '\0';
 
  error:
         return s;
